@@ -33,7 +33,7 @@ install DataStax Enterprise
 
 if you are not on a DSE node, then copy your code to DSE with scp target/scala-2.10/sparkscalatest_2.10-1.0.jar targetdir
 
-On DSE to execute SparkSqlDemo.scala
+On DSE to execute SparkSqlDemo.scala 
 ```
   dse spark-submit --class com.sparksqltest.SparkSqlDemo sparkscalatest_2.10-0.4-SNAPSHOT.jar 'dsetool sparkmaster'
   
