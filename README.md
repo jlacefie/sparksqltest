@@ -10,12 +10,12 @@ It uses a set of csv files containing historical MLB statistics. loads them int 
 # set up
 
 install DataStax Enterprise
+
+from a DSE node, assuming a dev node
 ```
   git clone https://github.com/jlacefie/sparksqltest.git
 
-  cd sparksqltest
-  
-  cd data
+  cd sparksqltest/data
 
   wget http://seanlahman.com/files/database/lahman-csv_2014-02-14.zip
 
@@ -31,9 +31,7 @@ install DataStax Enterprise
 
 ```
 
-if you are not on a DSE node, then copy your code to DSE with scp target/scala-2.10/sparkscalatest_2.10-1.0.jar targetdir
-
-On DSE to execute SparkSqlDemo.scala 
+On DSE node in sparksqltest directory 
 ```
   dse spark-submit --class com.sparksqltest.SparkSqlDemo sparkscalatest_2.10-0.4-SNAPSHOT.jar 'dsetool sparkmaster'
   
