@@ -61,7 +61,7 @@ This command uses the dse spark-submit operation and passes in the following arg
   
 ```
 # Ad hoc Querying with DSE Spark SQL and the Spark REPL
-In addition to executing Spark a Stand Alone application written in Scala, we also have the ability with DSE 4.6, to execute Ad hoc queries using Spark SQL through the Spark REPL.
+In addition to executing Spark as a Stand Alone application written in Scala, we also have the ability with DSE 4.6, to execute Ad hoc queries using Spark SQL through the Spark REPL.
 
 The following section provides a couple of sample queries that show some of the functionality of the Spark SQL library.
 
