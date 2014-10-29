@@ -14,10 +14,6 @@
 * limitations under the License.
 */
 
-package com.sparksqltest
-
-import scala.collection.JavaConversions._
-
 class AwardsCollection (
                          val awardid: String,
                          val playerSet: Set[String] ,

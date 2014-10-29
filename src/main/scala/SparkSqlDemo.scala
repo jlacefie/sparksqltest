@@ -14,17 +14,15 @@
 * limitations under the License.
 */
 
-package com.sparksqltest
-
-
 import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql.CassandraConnector
+import com.datastax.spark.connector.writer.SqlRowWriter
+import org.apache.spark.SparkContext._
+import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.cassandra.CassandraSQLContext
 import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.SparkContext._
-import org.apache.spark.rdd.{RDD, PairRDDFunctions}
+
 import scala.collection.JavaConversions._
-import com.datastax.spark.connector.writer.SqlRowWriter
 
 object SparkSqlDemo {
   //set up configuration item
