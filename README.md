@@ -17,7 +17,7 @@ This demo is for example purposes only and assumes you would run this demo on a 
 
 # Dependencies
 
-The first dependency is to ensure you have sbt 0.13.5 installed on the machine that will be used to build the demo.  As the instructions to install sbt are platform dependant, it is left up to the user to preform this step accurately.
+The first dependency for this project is to ensure you have sbt 0.13.5 installed on the machine that will be used to build the demo.  As the instructions to install sbt are platform dependant, it is left up to the user to preform this step accurately.
 
 The next dependency in this process is to execute the following shell script that will download and build a pre-released version of the spark-cassandra-connector. 
 ```
