@@ -1,4 +1,0 @@
-[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
-[0m[[0mdebug[0m] [0m	(/Users/jlacefield/Desktop/DataStax/JavaProjects/SparkScalaTest/src/main/resources/cql,/Users/jlacefield/Desktop/DataStax/JavaProjects/SparkScalaTest/target/scala-2.10/classes/cql)[0m
-[0m[[0mdebug[0m] [0m	(/Users/jlacefield/Desktop/DataStax/JavaProjects/SparkScalaTest/src/main/resources/cql/load_data.cql,/Users/jlacefield/Desktop/DataStax/JavaProjects/SparkScalaTest/target/scala-2.10/classes/cql/load_data.cql)[0m
-[0m[[0mdebug[0m] [0m	(/Users/jlacefield/Desktop/DataStax/JavaProjects/SparkScalaTest/src/main/resources/cql/schmea.cql,/Users/jlacefield/Desktop/DataStax/JavaProjects/SparkScalaTest/target/scala-2.10/classes/cql/schmea.cql)[0m
