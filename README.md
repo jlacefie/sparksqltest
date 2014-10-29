@@ -19,20 +19,21 @@ This demo is for example purposes only and assumes you would run this demo on a 
 
 The first dependency for this project is to ensure you have sbt 0.13.5 installed on the machine that will be used to build the demo.  As the instructions to install sbt are platform dependant, it is left up to the user to preform this step accurately.
 
-The next dependency in this process is to execute the following shell script that will download and build a pre-released version of the spark-cassandra-connector. 
+The next dependency in this process is to execute the following shell script that will download and build a pre-released version of the spark-cassandra-connector. This shel script is located in the resources directory of this project.  You will first need to clone this project.
+
 ```
+git clone https://github.com/jlacefie/sparksqltest.git
+
 /resources/sst_dependency.sh
 ```
 
-Once the spark-cassandra-connector has been built, it is required to be placed on each DSE node in the cluster.  Please replace the existing /usr/share/dse/spark/lib/spark-cassandra-connector_2.10-1.1.0-alpha3.jar with the newly built jar found in the <> directory.
+Once the spark-cassandra-connector has been built, it is required to be placed on each DSE node in the cluster.  Please replace the existing /usr/share/dse/spark/lib/spark-cassandra-connector_2.10-1.1.0-alpha3.jar with the newly built jar, connector_2.10-1.1.0-SNAPSHOT.jar, found in the <wherever you executed the sst_dependency.sh command>/spark-cassandra-connector/spark-cassandra-connector/target/scala-2.10/ directory.
 
 # Demo Project Build
-The next step is to setup the project in a new directory, not in the spark-cassandra-connector directory.
+The next step is to setup the project.  To start go back to the sparksqltest directory.
 
 Execute the following commands to build the demo project.  Executing these commands will give you a feel for working with scala, particularly the sbt command.
 ```
-  git clone https://github.com/jlacefie/sparksqltest.git
-
   cd sparksqltest/data
 
   wget http://seanlahman.com/files/database/lahman-csv_2014-02-14.zip
