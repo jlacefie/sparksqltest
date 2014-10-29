@@ -11,7 +11,7 @@ It uses a set of csv files containing historical MLB statistics. loads them int 
 
 install DataStax Enterprise
 ```
-  git clone git@github.com:jlacefie/SparkSqlTest.git
+  git clone https://github.com/jlacefie/SparkSqlTest.git
 
   cd sparsqltest
   
