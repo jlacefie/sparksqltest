@@ -24,6 +24,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd.{RDD, PairRDDFunctions}
 import scala.collection.JavaConversions._
+import com.datastax.spark.connector.writer.SqlRowWriter
 
 object SparkSqlDemo {
   //set up configuration item
@@ -68,8 +69,8 @@ object SparkSqlDemo {
     loadWithInsert(sqlc)
 
     //show a more complicated mapping insert
-    println("test load via map and saveToCassandra")
-    loadWithMap(sqlc)
+    println("test load via saveToCassandra")
+    loadWithSave(sqlc, sc)
 
     //show an async insert with the datastax driver
     println("test load via async")
@@ -107,24 +108,16 @@ object SparkSqlDemo {
   }
 
   /** Example of how to preform RDD operations on the results of a Spark SQL query and then save the final Rdd back to Cassandra */
-    //this section shows how to load data back into cassandra
-    //step 1 - extract data using SparkSQL and apply data transformation on extract
-    //step 2 - map data to a new Rdd for insertion
-    //step 3 - load data into Cassandra with rdd.saveToCassandra
-  def loadWithMap(sqlc: CassandraSQLContext): Unit ={
+  def loadWithSave(sqlc: CassandraSQLContext, sc: SparkContext): Unit ={
 
     //step 1 - find a count of awards by award, league, and batting position from 1940 to today and Capitalize the Award Name, remove nulls
     //nulls should be removed per here - https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/expressions/Row.scala
     val source = sqlc.sql("SELECT UPPER(ap.awardid), ap.lgid, IF(m.bats is null, '', m.bats), count(*) FROM awardsplayers ap INNER JOIN master m ON ap.playerid = m.playerid WHERE ap.yearid > 1940 GROUP BY ap.awardid, ap.lgid, m.bats ORDER BY ap.awardid, ap.lgid, m.bats")
 
-    //step 2
-    //create an object to represent our data for the insert
-    case class AwardsPlayers(awardid: String, lgid: String , bats: String , count: Long)
-    //map data into the schemaRdd to an RDD type that can be used with the saveToCassandra step
-    val target = source.map(row => AwardsPlayers(row.getString(0),row.getString(1),row.getString(2),row.getLong(3)))
+    //other manipulations could go here
 
-    //step 3
-    target.saveToCassandra(keyspace, "awardssummary2",SomeColumns("awardid","lgid","bats","count"))
+    //step 2 - save to cassandra
+    source.saveToCassandra(keyspace, "awardssummary2",SomeColumns("awardid","lgid","bats","count"))(CassandraConnector(sc.getConf), SqlRowWriter.Factory)
 
     //test that the save was successful
     val test = sqlc.sql("SELECT * FROM awardssummary2")
