@@ -1,4 +1,4 @@
-Spark SQL Test
+spark sql test
 =================
 
 The code in this repo, and the instructions below use DataStax Spark SQl to provide examples of how to work with Spark SQL in an scala environment.
@@ -11,7 +11,7 @@ It uses a set of csv files containing historical MLB statistics. loads them int 
 
 install DataStax Enterprise
 ```
-  git clone https://github.com/jlacefie/SparkSqlTest.git 
+  git clone https://github.com/jlacefie/sparksqltest.git
 
   cd sparsqltest
   
