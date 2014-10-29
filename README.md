@@ -28,6 +28,9 @@ sbt assembly
 sbt publish-local
 ```
 
+once you build the b1.1 branch of the connector, you will need to place it on each DSE node.
+you will want to replace the existing /usr/share/dse/spark/lib/spark-cassandra-connector_2.10-1.1.0-alpha3.jar with the new jar
+
 now setup the project in a new directory, not in the spark-cassandra-connector directory
 
 this assumes we have a standalone version of sbt.  
