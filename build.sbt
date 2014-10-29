@@ -1,4 +1,4 @@
-name := "SparkScalaTest"
+name := "sparksqltest"
 
 version := "1.0"
 
