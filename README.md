@@ -21,7 +21,7 @@ The first dependency for this project is to ensure you have sbt 0.13.5 installed
 
 The next dependency in this process is to execute the following shell script that will download and build a pre-released version of the spark-cassandra-connector. 
 ```
-sst_dependency.sh
+/resources/sst_dependency.sh
 ```
 
 Once the spark-cassandra-connector has been built, it is required to be placed on each DSE node in the cluster.  Please replace the existing /usr/share/dse/spark/lib/spark-cassandra-connector_2.10-1.1.0-alpha3.jar with the newly built jar found in the <> directory.
