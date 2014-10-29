@@ -13,7 +13,7 @@ install DataStax Enterprise
 ```
   git clone https://github.com/jlacefie/sparksqltest.git
 
-  cd sparsqltest
+  cd sparksqltest
   
   cd data
 
