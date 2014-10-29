@@ -1,7 +1,7 @@
 spark sql test
 =================
 
-The code in this repo, and the instructions below, provide examples of how to work with the DataStax Enterprise 4.6 Release of Spark SQL in an scala environment.
+The code in this repo, and the instructions below, provide examples of how to work with the DataStax Enterprise 4.6 Release of Spark SQL in a scala environment.  The README also contains a few examples showing how to work with ad hoc queries and the Spark REPL.
 
 This project is based on the examples provided in the spark-driver-demo found here:  https://github.com/DataStaxCodeSamples/spark-driver-demo
 
