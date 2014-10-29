@@ -50,7 +50,7 @@ Execute the following commands to build the demo project.  Executing these comma
 ```
 # Execute the Demo
 
-The final test is to execute the sparksqltest jar on the DSE node from the sparksqltest directory created in the last step. 
+The final step is to execute the sparksqltest jar on the DSE node from the sparksqltest directory created in the last step. 
 
 This command uses the dse spark-submit operation and passes in the following arguments:
   arg[0] --class the class that is used to execute the demo
