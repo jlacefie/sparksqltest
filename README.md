@@ -54,7 +54,7 @@ this assumes we have a standalone version of sbt.
 
 On DSE node in sparksqltest directory 
 ```
-  dse spark-submit --class com.sparksqltest.SparkSqlDemo sparkscalatest_2.10-0.4-SNAPSHOT.jar 'dsetool sparkmaster'
+  dse spark-submit --class com.sparksqltest.SparkSqlDemo target/scala-2.10/sparkscalatest_2.10.jar 'dsetool sparkmaster'
   
 ```
 
