@@ -5,7 +5,7 @@ The code in this repo, and the instructions below, provide examples of how to wo
 
 This project is based on the examples provided in the spark-driver-demo found here:  https://github.com/DataStaxCodeSamples/spark-driver-demo
 
-It uses a set of csv files containing historical MLB statistics, loads them via the cqlsh COPY command, and then demonstrates the use of Spark SQL found in the 4.6 DataStax Enterprise. 
+It uses a set of csv files containing historical MLB statistics, loads them via the cqlsh COPY command, and then demonstrates the use of Spark SQL found in 4.6 DataStax Enterprise. 
 
 # Set Up
 
