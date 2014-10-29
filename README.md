@@ -16,16 +16,16 @@ from a DSE node, assuming a dev node, run the following
 note: since this is an eap project from DataStax, there is a branch, pre-released, version of the spark-cassandra-connector required
 
 first get the connector and publish it locally.  ingore warnings during the assembly
-note: the connector provides a fork of sbt. we will use the provided sbt for connector "stuff"
+be sure to use sbt 0.13.5
 
 ```
 git clone -b b1.1 https://github.com/datastax/spark-cassandra-connector.git
 
 cd spark-cassandra-connector
 
-sbt/sbt assembly
+sbt assembly
 
-sbt/sbt publish-local
+sbt publish-local
 ```
 
 now setup the project in a new directory, not in the spark-cassandra-connector directory
