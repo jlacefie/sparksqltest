@@ -1,11 +1,11 @@
-spark sql test
+Spark SQL Example
 =================
 
-The code in this repo, and the instructions below, provide examples of how to work with the DataStax Enterprise 4.6 Release of Spark SQL in a scala environment.  The README also contains a few examples showing how to work with ad hoc queries and the Spark REPL.
+The code in this repo, and the instructions below, provide examples of how to work with the DataStax Enterprise 4.6 Release of Spark SQL in a Scala environment.  The README also contains a few examples showing how to work with Ad hoc queries and the Spark REPL.
 
 This project is based on the examples provided in the spark-driver-demo found here:  https://github.com/DataStaxCodeSamples/spark-driver-demo
 
-It uses a set of csv files containing historical MLB statistics, loads them via the cqlsh COPY command, and then demonstrates the use of Spark SQL found in 4.6 DataStax Enterprise. 
+It uses a set of CSV files containing historical Major League Baseball statistics, loads them via the cqlsh COPY command, and then demonstrates the use of Spark SQL found in 4.6 DataStax Enterprise. 
 
 # Set Up
 
@@ -16,10 +16,10 @@ The next step is to get the demo application up and running on a DataStax Enterp
 This demo is for example purposes only and assumes you would run this demo on a non Production node.
 
 # Dependencies
+f
+The first dependency is to ensure you have sbt 0.13.5 installed on the machine that will be used to build the demo.  As the instructions to install sbt are platform dependent, it is left up to the user to perform this step accurately.
 
-The first dependency for this project is to ensure you have sbt 0.13.5 installed on the machine that will be used to build the demo.  As the instructions to install sbt are platform dependant, it is left up to the user to preform this step accurately.
-
-The next dependency in this process is to execute the following shell script that will download and build a pre-released version of the spark-cassandra-connector. This shel script is located in the resources directory of this project.  You will first need to clone this project.
+The next dependency in this process is to execute the following shell script that will download and build a pre-released version of spark-cassandra-connector. This shell script is located in the resources directory of this project.  You will first need to clone this project.
 
 ```
 git clone https://github.com/jlacefie/sparksqltest.git
