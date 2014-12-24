@@ -26,17 +26,20 @@ import scala.collection.JavaConversions._
 
 object SparkSqlDemo {
   //set up configuration item
-  val master = "172.31.12.36"
   val keyspace = "cassandra_spark_mlbdata"
 
   def main(args: Array[String]) {
+	  if(args.length < 1) {
+    	  println("Spark master URL missing from arguments, use `dsetool sparkmaster` to determinate the local spark master connection URI")
+		  System.exit(-1)
+	  }
+	var sparkUri = args(0)
     val sparkconf = new SparkConf()
-      .setMaster(master)
       .setAppName("Spark SQL Test")
       .setSparkHome(System.getenv("SPARK_HOME"))
 
     //create a new SparkContext
-    val sc = new SparkContext(s"spark://$master:7077", "test", sparkconf)
+    val sc = new SparkContext(sparkUri, "test", sparkconf)
     //create a new SparkSQLContext
     val sqlc = new CassandraSQLContext(sc)
 

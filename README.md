@@ -5,7 +5,9 @@ The code in this repo, and the instructions below, provide examples of how to wo
 
 This project is based on the examples provided in the spark-driver-demo found here:  https://github.com/DataStaxCodeSamples/spark-driver-demo
 
-It uses a set of CSV files containing historical Major League Baseball statistics, loads them via the cqlsh COPY command, and then demonstrates the use of Spark SQL found in 4.6 DataStax Enterprise. 
+It uses a set of CSV files containing historical Major League Baseball statistics, loads them via the cqlsh COPY command, and then demonstrates the use of Spark SQL found in 4.6 DataStax Enterprise.
+
+https://academy.datastax.com/demos/datastax-enterprise-46-and-spark-sql
 
 # Set Up
 
@@ -16,24 +18,16 @@ The next step is to get the demo application up and running on a DataStax Enterp
 This demo is for example purposes only and assumes you would run this demo on a non Production node.
 
 # Dependencies
-f
-The first dependency is to ensure you have sbt 0.13.5 installed on the machine that will be used to build the demo.  As the instructions to install sbt are platform dependent, it is left up to the user to perform this step accurately.
 
-The next dependency in this process is to execute the following shell script that will download and build a pre-released version of spark-cassandra-connector. This shell script is located in the resources directory of this project.  You will first need to clone this project.
-
-```
-git clone https://github.com/jlacefie/sparksqltest.git
-
-/resources/sst_dependency.sh
-```
-
-Once the spark-cassandra-connector has been built, it is required to be placed on each DSE node in the cluster.  Please replace the existing /usr/share/dse/spark/lib/spark-cassandra-connector_2.10-1.1.0-alpha3.jar with the newly built jar, connector_2.10-1.1.0-SNAPSHOT.jar, found in the <wherever you executed the sst_dependency.sh command>/spark-cassandra-connector/spark-cassandra-connector/target/scala-2.10/ directory.
+ * [sbt 0.13.5](http://www.scala-sbt.org/) or above.
+ * [spark-cassandra-connector 1.1.0](https://github.com/datastax/spark-cassandra-connector) and above(already included in DSE 4.6)
 
 # Demo Project Build
-The next step is to setup the project.  To start go back to the sparksqltest directory.
+The next step is to setup the project. To start go back to the sparksqltest directory.
 
 Execute the following commands to build the demo project.  Executing these commands will give you a feel for working with scala, particularly the sbt command.
-```
+
+```bash
   cd sparksqltest/data
 
   wget http://seanlahman.com/files/database/lahman-csv_2014-02-14.zip
@@ -49,16 +43,19 @@ Execute the following commands to build the demo project.  Executing these comma
   sbt package
 
 ```
+
 # Execute the Demo
 
 The final step is to execute the sparksqltest jar on the DSE node from the sparksqltest directory created in the last step. 
 
 This command uses the dse spark-submit operation and passes in the following arguments:
-  arg[0] --class the class that is used to execute the demo
-  arg[1] the location of the jar file we built in the last step
-  arg[3] the spark master ip address which is obtained dynamically from the dsetool utility
-```
-  dse spark-submit --class com.sparksqltest.SparkSqlDemo target/scala-2.10/sparksqltest_2.10.jar 'dsetool sparkmaster'
+
+   * __arg[0]__: --class the class that is used to execute the demo
+   * __arg[1]__: the location of the jar file we built in the last step
+   * __arg[3]__: the spark master ip address which is obtained dynamically from the dsetool utility
+   
+```bash
+  dse spark-submit --class SparkSqlDemo target/scala-2.10/sparksqltest_2.10-1.0.jar `dsetool sparkmaster`
   
 ```
 # Ad hoc Querying with DSE Spark SQL and the Spark REPL
@@ -67,16 +64,20 @@ In addition to executing Spark as a Stand Alone application written in Scala, we
 The following section provides a couple of sample queries that show some of the functionality of the Spark SQL library.
 
 First we start the DSE Spark REPL and select the keyspace that contains our target tables.
-```
+```bash
 dse spark
+```
 
+Switch to keyspace:
+
+```scala
 setKeyspace("cassandra_spark_mlbdata")
 
 ```
 
 Now we execute queries and print results.
 
-```
+```scala
 val test = sql("SELECT yearid, stint, teamid, playerid, SUM(ab), AVG(bb), SUM(g), SUM(h)/SUM(ab) from batting WHERE playerid = 'pruethu01' GROUP BY yearid, stint, teamid, playerid ORDER BY yearid, stint, teamid")
 
 test.take(100).foreach(println)
